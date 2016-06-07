@@ -62,7 +62,6 @@ class ModelSetup
 	
 	~ModelSetup( void )
 	{
-		//game.print("\nModelSetup: destroyed\n\n");
 	}
 	
 	// this must be called after constructor

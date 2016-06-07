@@ -108,7 +108,7 @@
 
 			Element @content = @body.getElementById( contentBlock );
 			if( @content == null ) {
-				game.print( S_COLOR_YELLOW + 'animationsOnShow: missing content block "' + contentBlock + '"\n' );
+				console.warn( 'animationsOnShow: missing content block "' + contentBlock + '"\n' );
 				return;
 			}
 

@@ -97,7 +97,7 @@ class ModelView
 			SetSkin( @elem, this.modelSkin );
 
 			if(	!model.setProp( 'model-modelpath', modelPath ) )
-				game.print( "ModelView: modelpath parsing failed\n" );
+				console.warn( "ModelView: modelpath parsing failed\n" );
 		}
 	}
 	
@@ -132,7 +132,7 @@ class ModelView
 			String skinPath = basePath + this.modelType + '/' + this.modelSkin + skinExt;
 
 			if( !model.setProp( 'model-skinpath', skinPath ) )
-				game.print("ModelView: skinpath parsing failed\n");
+				console.warn("ModelView: skinpath parsing failed\n");
 		}
 	}
 	
