@@ -69,6 +69,7 @@ class VideoSetup
 	String idMode;
 	String idModeFrame;
 	String idFullscreenFrame;
+	String idBorderlessFrame;
 	String idVsyncFrame;
 	String idRMaxFpsFrame;
 	String idClMaxFpsFrame;
@@ -84,7 +85,7 @@ class VideoSetup
 				const String &idProfile,
 				const String &idVideoFrame,
 				const String &idMode, const String &idModeFrame,
-				const String &idFullscreenFrame, const String &idVsyncFrame,
+				const String &idFullscreenFrame, const String &idBorderlessFrame, const String &idVsyncFrame,
 				const String &idRMaxFpsFrame, const String &idClMaxFpsFrame,
 				const String &idGammaFrame,
 				const String &idPicmip, const String &idPicmipFrame,
@@ -98,6 +99,7 @@ class VideoSetup
 		this.idMode = idMode;
 		this.idModeFrame = idModeFrame;
 		this.idFullscreenFrame = idFullscreenFrame;
+		this.idBorderlessFrame = idBorderlessFrame;
 		this.idVsyncFrame = idVsyncFrame;
 		this.idRMaxFpsFrame = idRMaxFpsFrame;
 		this.idClMaxFpsFrame = idClMaxFpsFrame;
@@ -209,15 +211,28 @@ class VideoSetup
 
 	void CheckFullscreenAvailability( Element @elem )
 	{
+		Element @frame;
+		bool hideBorderless = false;
+	
 		if( window.osName == 'Android' )
 		{
-			Element @frame = elem.getElementById( idFullscreenFrame );
+			@frame = elem.getElementById( idFullscreenFrame );
 			if ( @frame != null )
 				frame.css( 'display', 'none' );
+			
+			hideBorderless = true;
 		}
 		else
 		{
+			bool fs = Cvar( 'vid_fullscreen', '1', ::CVAR_ARCHIVE ).boolean;
+			hideBorderless = !fs;
 			showVideoFrame = true;
+		}
+		
+		if ( hideBorderless ) {
+			@frame = elem.getElementById( idBorderlessFrame );
+			if ( @frame != null )
+				frame.css( 'display', 'none' );
 		}
 	}
 

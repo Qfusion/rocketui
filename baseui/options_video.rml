@@ -17,7 +17,7 @@
 				"graphics-profile",
 				"video-frame",
 				"mode", "mode-frame",
-				"fullscreen-frame", "vsync-frame",
+				"fullscreen-frame", "borderless-frame", "vsync-frame",
 				"r_maxfps-frame", "cl_maxfps-frame",
 				"gamma-frame",
 				"picmip", "picmip-frame",
@@ -79,6 +79,12 @@
 					<div id="fullscreen-frame">
 						<div class="title">Fullscreen</div>
 						<input cvar="vid_fullscreen" type="checkbox" class="checkbox"/>
+						<br/>
+					</div>
+
+					<div id="borderless-frame">
+						<div class="title">Borderless fullscreen</div>
+						<input cvar="vid_borderless" type="checkbox" class="checkbox"/>
 						<br/>
 					</div>
 
