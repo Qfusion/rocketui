@@ -225,7 +225,7 @@ class VideoSetup
 		else
 		{
 			bool fs = Cvar( 'vid_fullscreen', '1', ::CVAR_ARCHIVE ).boolean;
-			hideBorderless = !fs;
+			hideBorderless = fs;
 			showVideoFrame = true;
 		}
 		
