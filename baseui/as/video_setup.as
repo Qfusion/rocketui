@@ -45,7 +45,7 @@ class VideoSetup
 	Cvar r_multithreading( "r_multithreading", "1", 0 );
 	
 	// renderer maxfps
-	Cvar r_maxfps( "r_maxfps", "0", 0 );
+	Cvar r_maxfps( "r_maxfps", "250", 0 );
 	
 	// quality of textures
 	Cvar r_picmip( "r_picmip", "0", 0 );
