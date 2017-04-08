@@ -63,6 +63,9 @@ class VideoSetup
 	// shadows
 	Cvar cg_shadows( "cg_shadows", "1", CVAR_ARCHIVE );
 	
+	// sRGB
+	Cvar r_sRGB( "r_sRGB", "1", 0 );
+	
 	// ids
 	String idProfile;
 	String idVideoFrame;
@@ -80,6 +83,7 @@ class VideoSetup
 	String idFilteringFrame;
 	String idLighting;
 	String idSoftParticlesFrame;
+	String idsRGBFrame;
 
 	VideoSetup( Element @elem, 
 				const String &idProfile,
@@ -91,8 +95,9 @@ class VideoSetup
 				const String &idPicmip, const String &idPicmipFrame,
 				const String &idFiltering,
 				const String &idFilteringFrame,
-				const String &idLighting, 
-				const String &idSoftParticlesFrame )
+				const String &idLighting,
+				const String &idSoftParticlesFrame,
+				const String &idsRGBFrame )
 	{
 		this.idProfile = idProfile;
 		this.idVideoFrame = idVideoFrame;
@@ -110,6 +115,7 @@ class VideoSetup
 		this.idFilteringFrame = idFilteringFrame;
 		this.idLighting = idLighting;
 		this.idSoftParticlesFrame = idSoftParticlesFrame;
+		this.idsRGBFrame = idsRGBFrame;
 
 		// We only have 3 choices in lightning listbox:
 		// vertex lighting: lighting_vertexlight = 1, lighting_deluxemapping = 0
@@ -437,6 +443,19 @@ class VideoSetup
 		}
 	}
 
+	void SetsRGB( Element @elem, bool reset )
+	{
+		Element @frame;
+		int hdr = Cvar( 'r_hdr', '1', ::CVAR_ARCHIVE ).integer;
+		int bloom = Cvar( 'r_bloom', '1', ::CVAR_ARCHIVE ).integer;
+		
+		if ( hdr == 1 or bloom == 1)
+			r_sRGB.set( 1 );
+		else 
+			r_sRGB.set( 0 );
+		Changed();
+	}
+
 	void Changed( void )
 	{
 		allowVidRestart = true;
@@ -448,6 +467,7 @@ class VideoSetup
 		SetPicmip( @elem, true );
 		SetFiltering( @elem, true );
 		SetLighting( @elem, true );
+		SetsRGB ( @elem, true );
 		
 		// cvars are not changed
 		allowVidRestart = false;
@@ -462,6 +482,7 @@ class VideoSetup
 			SetPicmip( @elem, false );
 			SetFiltering( @elem, false );
 			SetLighting( @elem, false );
+			SetsRGB ( @elem, false );
 			
 			game.execAppend ( "vid_restart\n" );
 		}

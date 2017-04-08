@@ -23,7 +23,7 @@
 				"picmip", "picmip-frame",
 				"filtering", "filtering-frame",
 				"lighting",
-				"softparticles-frame" );
+				"softparticles-frame", "srgb-frame" );
 			video = setup;
 
 			@form = body.getElementById( "options-form" );
@@ -197,6 +197,15 @@
 				<div class="title">Color correction</div>
 				<input cvar="cg_colorCorrection" type="checkbox" class="checkbox"/>
 				<br/>
+		
+				<div id="srgb-frame">
+					<div class="title">High Dynamic Range</div>
+					<input cvar="r_hdr" type="checkbox" class="checkbox"/>
+					<br/>
+					<div class="title">Bloom</div>
+					<input cvar="r_bloom" type="checkbox" class="checkbox"/>
+					<br/>
+				</div>
 
 				<div class="title">Greyscale lighting</div>
 				<input cvar="r_lighting_grayscale" type="checkbox" class="checkbox"/>
