@@ -92,7 +92,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 		}
 	</script>
 </head>
-<body template="porkui_ingame" onload="$onTemplateLoad" onshow="$onCustomShow">
+<body template="baseui_ingame" onload="$onTemplateLoad" onshow="$onCustomShow">
 	<div id="menu-ingame">
 		<div id="menu-header1" />
 		<div id="menu-header2" />

@@ -1,4 +1,4 @@
-<template name="porkui_ingame" content="modal-frame">
+<template name="baseui_ingame" content="modal-frame">
 <head>
 	<title>game</title>
 	<link rel="stylesheet" type="text/css" href="css/html4.rcss" />

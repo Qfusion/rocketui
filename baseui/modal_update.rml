@@ -61,7 +61,7 @@
 		}
 	</script>
 </head>
-<body template="porkui_modal" onload="$onModalUpdateLoad" onshow="$onModalUpdateShow">
+<body template="baseui_modal" onload="$onModalUpdateLoad" onshow="$onModalUpdateShow">
 	<div id="basic_content">
 	</div>
 </body>

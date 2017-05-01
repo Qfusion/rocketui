@@ -10,5 +10,5 @@
 		}
 	</script>
 </head>
-<body template="porkui_modal_remote" onload="$onModalRemoteProfileLoad"/>
+<body template="baseui_modal_remote" onload="$onModalRemoteProfileLoad"/>
 </rml>

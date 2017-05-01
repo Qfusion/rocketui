@@ -1,4 +1,4 @@
-<template name="porkui_modal_remote" content="content">
+<template name="baseui_modal_remote" content="content">
 <head>
 	<title>modal</title>
 	<link type="text/template" href="template_modal.rml" />
@@ -29,7 +29,7 @@
 		}
 	</script>
 </head>
-<body template="porkui_modal" onload="$onModalLoad" onshow="$onModalRemoteShow">
+<body template="baseui_modal" onload="$onModalLoad" onshow="$onModalRemoteShow">
 	<idiv id="remote_content" />
 </body>
 </template>

@@ -22,7 +22,7 @@
 		}
 	</script>
 </head>
-<body template="porkui_modal" onload="$onModalLoad" onshow="$onModalBasicShow">
+<body template="baseui_modal" onload="$onModalLoad" onshow="$onModalBasicShow">
 	<div id="basic_content">
 	</div>
 </body>

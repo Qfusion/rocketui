@@ -101,7 +101,7 @@
 		}
 	</script>
 </head>
-<body template="porkui" onshow="$onTeamsShow">
+<body template="baseui" onshow="$onTeamsShow">
 
 	<!-- divide the screen to two vertical contexts -->	
 	<div id="leftside">

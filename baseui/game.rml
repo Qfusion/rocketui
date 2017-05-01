@@ -218,7 +218,7 @@
 		}
 	</script>
 </head>
-<body template="porkui_ingame" onload="$onGameLoad" onshow="$onGameShow">
+<body template="baseui_ingame" onload="$onGameLoad" onshow="$onGameShow">
 	<div id="menu-ingame">
 		<field id="menu-header1" formatter="colorcode" />
 		<field id="menu-header2" formatter="colorcode" />

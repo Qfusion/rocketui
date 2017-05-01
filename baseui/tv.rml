@@ -90,7 +90,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 		}
 	</script>
 </head>
-<body template="porkui_ingame" onload="$onTVLoad" onshow="$onTVShow">
+<body template="baseui_ingame" onload="$onTVLoad" onshow="$onTVShow">
 	<div id="tv-frame">
 		<div id="menu-header1">TV</div>
 

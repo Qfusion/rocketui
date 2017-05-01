@@ -128,7 +128,7 @@
 		}
 	</script>
 </head>
-<body template="porkui" onload="$onInputLoad" onshow="$onInputShow">
+<body template="baseui" onload="$onInputLoad" onshow="$onInputShow">
 
 	<!-- divide the screen to two vertical contexts -->	
 	<div id="leftside">

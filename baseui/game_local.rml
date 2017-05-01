@@ -111,7 +111,7 @@
 		}
 	</script>
 </head>
-<body template="porkui" onload="$onLocalGameLoad" onshow="$onLocalGameShow">
+<body template="baseui" onload="$onLocalGameLoad" onshow="$onLocalGameShow">
 	<!-- divide the screen to two vertical contexts -->	
 	<div id="leftside">
 		<div id="game-local">

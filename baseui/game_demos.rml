@@ -245,7 +245,7 @@
 		}
 	</script>
 </head>
-<body template="porkui" onload="$onDemosLoad" onshow="$onDemosShow">
+<body template="baseui" onload="$onDemosLoad" onshow="$onDemosShow">
 	<!-- divide the screen to two vertical contexts -->	
 	<div id="leftside">
 		<div id="demopath" />

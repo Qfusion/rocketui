@@ -1,4 +1,4 @@
-<template name="porkui" content="content">
+<template name="baseui" content="content">
 <head>
 	<link rel="stylesheet" type="text/css" href="css/html4.rcss" />
 	<link rel="stylesheet" type="text/css" href="css/common.rcss" />
@@ -210,7 +210,7 @@
 	
 	<div id="console">
 		<!-- Console icon -->
-		<img src="/ui/porkui/gfx/console.tga" onclick="$openConsole" id="link_console" />
+		<img src="/ui/baseui/gfx/console.tga" onclick="$openConsole" id="link_console" />
 	</div>
 	
 </body>

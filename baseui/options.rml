@@ -3,7 +3,7 @@
 	<title>options</title>
 	<link type="text/template" href="template.rml" />
 </head>
-<body template="porkui" onshow="window.location = 'options_player.rml';">
+<body template="baseui" onshow="window.location = 'options_player.rml';">
 	<!-- divide the screen to two vertical contexts -->
 	<div id="leftside">
 		

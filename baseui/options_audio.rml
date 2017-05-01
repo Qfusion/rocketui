@@ -137,7 +137,7 @@
 		}
 	</script>	
 </head>
-<body template="porkui" onshow="$onAudioShow">
+<body template="baseui" onshow="$onAudioShow">
 	<!-- divide the screen to two vertical contexts -->	
 	<div id="leftside">
 		

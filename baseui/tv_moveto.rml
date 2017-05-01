@@ -66,7 +66,7 @@
 		}
 	</script>
 </head>
-<body template="porkui_modal" onload="$onTVMoveToLoad" onshow="$onTVMoveToShow">
+<body template="baseui_modal" onload="$onTVMoveToLoad" onshow="$onTVMoveToShow">
 	<div>The game server is suggesting you can watch this match on TV. Do you agree?<br/>
 	<span id="timer_msg"></span>
 	</div>

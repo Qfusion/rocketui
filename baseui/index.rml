@@ -164,7 +164,7 @@
 		}		
 	</script>
 </head>
-<body template="porkui" onload="$onHomeLoad" onshow="$onHomeShow" onfirstrender="$onHomeFirstRender" onregisterworldmodel="$onHomeRegisterWorldModel">
+<body template="baseui" onload="$onHomeLoad" onshow="$onHomeShow" onfirstrender="$onHomeFirstRender" onregisterworldmodel="$onHomeRegisterWorldModel">
 
 <iframe id="profile_container" src="profile.rml" />
 

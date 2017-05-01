@@ -233,7 +233,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 		}
 	</script>
 </head>
-<body template="porkui_ingame" onload="$onCallvotesLoad" onshow="$onCallvotesShow" onhide="$onCallvotesHide">
+<body template="baseui_ingame" onload="$onCallvotesLoad" onshow="$onCallvotesShow" onhide="$onCallvotesHide">
 	<div id="menu-ingame">
 		<div id="menu-header">Votes</div>
 

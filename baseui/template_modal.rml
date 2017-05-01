@@ -1,4 +1,4 @@
-<template name="porkui_modal" content="content">
+<template name="baseui_modal" content="content">
 <head>
 	<link rel="stylesheet" type="text/css" href="css/html4.rcss" />
 	<link rel="stylesheet" type="text/css" href="css/common.rcss" />

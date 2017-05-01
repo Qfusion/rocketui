@@ -62,7 +62,7 @@
 
 	</script>
 </head>
-<body template="porkui" onload="$onVideoLoad" onshow="$onVideoShow" onhide="$onVideoHide">
+<body template="baseui" onload="$onVideoLoad" onshow="$onVideoShow" onhide="$onVideoHide">
 	<!-- divide the screen to two vertical contexts -->	
 	<div id="leftside">
 		
