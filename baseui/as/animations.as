@@ -41,8 +41,8 @@ const int ANIMATION_TICK = 10;
 class MoveAnimation
 {
 	int animTime;
-	int animStartTime;
-	int animLastTime;
+	int64 animStartTime;
+	int64 animLastTime;
 	int animMoveTime;
 	Vec3 animStart;
 	Vec3 animDest;

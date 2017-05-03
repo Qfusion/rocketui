@@ -180,6 +180,8 @@
 	
 	<worldview id="background-map" class="ui-map" />
 
+	<blur />
+
 	<div id="background-overlay" />
 
 	<div id="header">

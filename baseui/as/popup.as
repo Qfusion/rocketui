@@ -2,8 +2,8 @@
 class NotificationPopup
 {
 	float alpha;
-	uint timerStart;
-	uint timerUpdate;
+	int64 timerStart;
+	int64 timerUpdate;
 	uint timerStayDuration;
 	Element @notbar;
 

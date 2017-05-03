@@ -12,7 +12,7 @@
 	const uint FRIENDS_LIST_REFRESH_INTERVAL = 1000*60;
 	URL friendsURL;
 	bool hidden;
-	uint lastUpdate;
+	int64 lastUpdate;
 	Element @friends_list;
 
 	void onFriendsLoad( Element @body, Event @ev )

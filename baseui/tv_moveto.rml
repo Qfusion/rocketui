@@ -4,7 +4,7 @@
 	<link type="text/template" href="template_modal.rml" />
 	<script>
 		const uint START_TIMER = 10000;
-		uint timer_abs;
+		int64 timer_abs;
 		String hostname = '';
 		String ipportchan = '';
 		int timer_id;
