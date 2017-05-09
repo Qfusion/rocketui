@@ -286,7 +286,7 @@
 						<input cvar="cg_simpleItems" type="checkbox" realtime="1"/>
 						<br/>
 						
-						<div class="title">Show teammates' names</div>
+						<div class="title">Show teammates' indicators</div>
 						<input cvar="cg_showTeamMates" type="checkbox" realtime="1"/>
 
 						<div class="title">Show help</div>
