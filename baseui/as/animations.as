@@ -81,9 +81,7 @@ class MoveAnimation
 			return;
 		animMoveTime = 0;
 		animStartTime = animLastTime = window.time;
-		animElement.css( 'position', 'relative' )
-			.css( 'left', animStart.x + "%" )
-			.css( 'top', animStart.y + "%" );
+		setElementPosition( animStart.x, animStart.y );
 		window.setInterval( __MoveAnimationCallback, ANIMATION_TICK, any(@this) );
 	}
 	
@@ -105,7 +103,7 @@ class MoveAnimation
 		
 		if( this.animTime > 0 )
 		{
-			int moveTime = window.time - this.animLastTime;			
+			int moveTime = window.time - this.animLastTime;
 			if( moveTime > ANIMATION_TICK )
 				moveTime = ANIMATION_TICK;
 
@@ -121,20 +119,32 @@ class MoveAnimation
 		}
 	
 		this.animLastTime = window.time;
-		this.setElementPosition( 'left', animStart.x, animDest.x, frac );
-		this.setElementPosition( 'top', animStart.y, animDest.y, frac );
+
+		int x = getRelativeElementPosition( animStart.x, animDest.x, frac );
+		int y = getRelativeElementPosition( animStart.y, animDest.y, frac );
+		setRelativeElementPosition( x, y );
 
 		if( frac == 1 ) 							// we are done
 			this.ceased = true;
 		return true; // continue to call this function
 	}
 	
-	private void setElementPosition( String prop, float start, float dest, float frac )
+	private int getRelativeElementPosition( float start, float dest, float frac )
 	{
 		float tmp = dest - start;
 		tmp = start + tmp * frac;
-		this.animElement.css( prop, int( tmp ) + "%" );
-	}		
+		return int( tmp );
+	}
+	
+	private void setRelativeElementPosition( int xPerc, int yPerc )
+	{
+		animElement.css( 'transform', "translate(" + xPerc + "%, " + yPerc + "%)" );
+	}
+	
+	private void setElementPosition( float x, float y )
+	{
+		animElement.css( 'transform', "translate(" + x + ", " + y + ")" );
+	}
 }
 
 float applyEase( float x, int ease ) // x needs to be between 0 and 1
