@@ -241,7 +241,7 @@
 
 	void openSuggestionDialog()
 	{
-		if( browserTableName == 'tv' || browserTableName == 'favorites' ) {
+		if( browserTableName == 'favorites' ) {
 			return;
 		}	
 		if( lastModalUpdateId == serverBrowser.getUpdateId() ) {
@@ -471,11 +471,6 @@
 		else
 			favoritebtn.setInnerRML( 'Add to favorites' );
 
-		bool isTV = ( browserTableName == 'tv' );
-		if( isTV ) {
-			return;
-		}
-		
 		formatServerInfoBlock( @serverblock, browserTableName, selectedRow );
 	}
 	
@@ -652,7 +647,6 @@
 			<a href="game_join.rml?servers=normal" id="link-normal">Normal weapons</a>
 			<a href="game_join.rml?servers=instagib" id="link-instagib">Instagib</a>
 			<a href="game_join.rml?servers=race" id="link-race">Race</a>
-			<a href="game_join.rml?servers=tv" id="link-tv">TV</a>
 			<a href="game_join.rml?servers=favorites" id="link-favorites">Favorites</a>
 		</div>
 		<div id="serverbrowser-container" class="dropshadow">

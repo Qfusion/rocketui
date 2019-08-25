@@ -65,7 +65,7 @@
 				return;
 			}
 
-			gamemenu.css( 'visibility', 'visible' );		
+			gamemenu.css( 'visibility', 'visible' );
 
 			if( params.get( 'is_teambased', tempStr ) ) {
 				isTeamBased = (tempStr.toInt() != 0);
@@ -76,7 +76,7 @@
 			if( params.get( 'queue', tempStr ) ) {
 				challenger = tempStr.toInt();
 			}
-			if( params.get( 'needs_ready', tempStr ) ) {		
+			if( params.get( 'needs_ready', tempStr ) ) {
 				needsReady = (tempStr.toInt() != 0);
 			}
 			if( params.get( 'is_ready', tempStr ) ) {
@@ -210,7 +210,7 @@
 
 			showMenuButton( 'btn-disconnect' );
 
-			showMenuButton( 'link-main' );			
+			showMenuButton( 'link-main' );
 			showMenuButton( 'btn-return' );
 
 			setModalY( 0.5f );
