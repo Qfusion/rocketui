@@ -35,8 +35,8 @@
 				int max_width = int( 1024 * window.pixelRatio );
 				if( window.width > max_width ) {
 					int padding = (window.width - max_width) / 2;
-					content.css( 'padding-left', String ( padding ) );
-					content.css( 'padding-right', String ( padding ) );
+					content.css( 'padding-left', String ( padding ) + "px" );
+					content.css( 'padding-right', String ( padding ) + "px" );
 				}
 			}
 			

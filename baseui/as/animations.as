@@ -96,7 +96,7 @@ class MoveAnimation
 				return false;						// doesn't look like it
 			else
 				this.animDoneCallback();
-			return false;		
+			return false;
 		}
 
 		float frac;
@@ -143,7 +143,7 @@ class MoveAnimation
 	
 	private void setElementPosition( float x, float y )
 	{
-		animElement.css( 'transform', "translate(" + x + ", " + y + ")" );
+		animElement.css( 'transform', "translate(" + x + "px, " + y + "px)" );
 	}
 }
 
