@@ -208,26 +208,22 @@
 				return;
 			}
 
-			String prop = demogrid.getProp( 'selected-row' );
-			if( prop != '' )
+			int selectedRow = demogrid.getAttr( 'selected-row', -1 );
+			if( selectedRow >= 0 )
 			{
-				int selectedRow = prop.toInt();
-				if( selectedRow >= 0 )
-				{
-					DataSource @data = getDataSource( demogridSource );
+				DataSource @data = getDataSource( demogridSource );
 
-					bool isDir = data.getField( currentPath, selectedRow, 'is_dir' ).toInt() > 0;
-					if( isDir ) {
-						// update source table which correponds to the new path
-						setDemogridPath( data.getField( currentPath, selectedRow, 'path' ) );
-						return;
-					}
-
-					// start demo playback
-					DemoInfo demo( data.getField( currentPath, selectedRow, 'path' ) );
-					demo.play();
+				bool isDir = data.getField( currentPath, selectedRow, 'is_dir' ).toInt() > 0;
+				if( isDir ) {
+					// update source table which correponds to the new path
+					setDemogridPath( data.getField( currentPath, selectedRow, 'path' ) );
+					return;
 				}
-			}		
+
+				// start demo playback
+				DemoInfo demo( data.getField( currentPath, selectedRow, 'path' ) );
+				demo.play();
+			}
 		}
 
 		void onDemolistDblClick( Element @elem, Event @ev )

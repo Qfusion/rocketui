@@ -1,1 +1,2 @@
 tabset tab  { width: 15%; }
+#binds panel { text-align: left; width: 100%; }

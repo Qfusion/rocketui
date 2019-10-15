@@ -26,7 +26,7 @@
 			if( @mapgrid != null ) {
 				Element @header = mapgrid.getColumnHeader( 0 );
 				if( @header != null ) {
-					header.setProp( 'width', String( cast<Element>( mapgrid ).clientWidth() / 3.0 ) );
+					header.setProp( 'width', String( int( cast<Element>( mapgrid ).clientWidth() / 3.0 ) ) + 'px' );
 				}
 			}
 
@@ -78,13 +78,9 @@
 			String map = "";
 
 			// index of the map
-			String prop = datagrid.css( 'selected-row' );
-			if( !prop.empty() )
-			{
-				int selectedRow = prop.toInt();
-				if( selectedRow >= 0 )
-					map = data.getField( 'list', selectedRow, 'name' );
-			}
+			int selectedRow = datagrid.getAttr( 'selected-row', -1 );
+			if( selectedRow >= 0 )
+				map = data.getField( 'list', selectedRow, 'name' );
 
 			if( map.empty() ) {
 				return;

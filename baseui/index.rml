@@ -10,6 +10,7 @@
 
 		void onNewsImageLoad( Element @elem, Event @event )
 		{
+
 			Element @imageElem = event.getTarget();
 			ElementImage @image = imageElem;
 			if( @image == null ) {
@@ -28,7 +29,7 @@
 			Element @body = window.document.body;
 			Element @content = body.getElementById( 'content' );
 			Element @news_container = body.getElementById( 'news_container' );
-			int newsWidth = int( news_container.resolveProp( 'width', content.clientWidth() ) - 16.0f * pixelRatio );
+			int newsWidth = int( news_container.resolveNumericProperty( 'width' ) - 16.0f * pixelRatio );
 			if( imageWidth > newsWidth ) {
 				float scale = float( newsWidth ) / float( imageWidth );
 				imageWidth = int( float( imageWidth ) * scale );
@@ -81,24 +82,24 @@
 			onTemplateLoad( body, event );
 				
 			window.setInterval( trackClientState, 100 );
-			
+
 			Element @news_container = body.getElementById( 'news_container' );
 			Element @content = body.getElementById( 'content' );
 			Element @friends_container = body.getElementById( 'friends_container' );
 			news_container.css( 'height',
 				( content.clientHeight() 
 				- body.getElementById( 'profile_container' ).clientHeight()
-				- int( content.resolveProp( 'padding-top', content.clientHeight() ) )
+				- int( content.resolveNumericProperty( 'padding-top' ) )
 				) + 'px'
 			)
 			.css( 'width', 
 				( content.clientWidth() 
 				- friends_container.clientWidth()
-				- int( content.resolveProp( 'padding-left', content.clientWidth() ) )
-				- int( content.resolveProp( 'padding-right', content.clientWidth() ) )
+				- int( content.resolveNumericProperty( 'padding-left' ) )
+				- int( content.resolveNumericProperty( 'padding-right' ) )
 				) + 'px'
 			);
-			
+
 			friends_container.css( 'height', news_container.css( 'height' ) );
 
 			body.getElementById( 'news' ).setAttr( 'src', 'http://www.qfusion.net/rml/news.rml?lang=' + GetUserLanguage() );

@@ -45,12 +45,14 @@
 
 			matchmakerTrackState();
 			
-			matchmaker.addEventListener( 'stateChange', onMatchMakerEvent );
+			matchmaker.addStateChangeCallback( onMatchMakerEvent );
 		}
 
 		void onProfileShow( Element @body, Event @event )
 		{
-			login_form.storeOptions();
+			if( @login_form != null ) {
+				login_form.storeOptions();
+			}
 		}
 
 		void matchmakerTrackState( void )
@@ -82,11 +84,9 @@
 			}
 		}
 
-		void onMatchMakerEvent( Event @event )
+		void onMatchMakerEvent( int oldState, int newState )
 		{
-			if( event.getType() == 'stateChange' ) {
-				matchmakerTrackState();
-			}
+			matchmakerTrackState();
 		}
 
 		void onLoginSubmit( Element @form, Event @event )

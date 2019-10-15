@@ -32,27 +32,12 @@ class ModelView
 	String modelId;
 	String modelType;
 	String modelSkin;
-	
-	/* These are css settings for modelview */
-	/* 
-	String modelPath;
-	String skinPath;
-	int fov;
-	int scale;
-	int outlineHeight;
-	int outlineColor;
-	String shaderColor;
-	int xRotation;
-	int yRotation;
-	int zRotation;
-	int xRotationSpeed;
-	int yRotationSpeed;
-	int zRotationSpeed;
-	*/
+	float maxScale;
 	
 	ModelView( String modelId )
 	{
 		this.modelId = modelId;
+		this.maxScale = 1.0;
 	}
 	
 	void Initialize( Element @elem, const String &modelType, const String &skin  )
@@ -89,15 +74,14 @@ class ModelView
 			
 			String modelPath = basePath + this.modelType + '/' + modelFile;
 			
-			model.setProp( 'model-scale', "0.0" );
+			model.setAttr( 'model-scale', 0.0 );
 			MVIEW_ANIM_CALLBACK @animate = MVIEW_ANIM_CALLBACK(this.__AnimModelScale);
 			window.setInterval( animate, 10, any(@model) );
 			
 			// skin looks bad when model changes
 			SetSkin( @elem, this.modelSkin );
 
-			if(	!model.setProp( 'model-modelpath', modelPath ) )
-				console.warn( "ModelView: modelpath parsing failed\n" );
+			model.setAttr( 'model-modelpath', modelPath );
 		}
 	}
 	
@@ -106,12 +90,12 @@ class ModelView
 		Element @model;
 		obj.retrieve(@model);
 		
-		float scale = model.getProp( 'model-scale' ).toFloat() + 0.05;
-		if( scale >= 1.0 ) {
-			model.setProp( 'model-scale', "1.0" );
+		float scale = model.getAttr( 'model-scale', 0.0 ) + 0.05;
+		if( scale >= maxScale ) {
+			model.setAttr( 'model-scale', maxScale );
 			return false;
 		}
-		model.setProp( 'model-scale', "" + scale );
+		model.setAttr( 'model-scale', scale );
 		return true;
 	}
 	
@@ -130,141 +114,133 @@ class ModelView
 			}
 
 			String skinPath = basePath + this.modelType + '/' + this.modelSkin + skinExt;
-
-			if( !model.setProp( 'model-skinpath', skinPath ) )
-				console.warn("ModelView: skinpath parsing failed\n");
+			model.setAttr( 'model-skinpath', skinPath );
 		}
 	}
 	
 	// Set the horizontal fov to use for the model
-	void SetFovX( Element @elem, const String &fov )
+	void SetFovX( Element @elem, const float fov )
 	{
 		Element @model = GetModel( @elem );
 		
-		if( @model != null && !fov.empty() )
+		if( @model != null )
 		{
-			model.setProp( 'model-fov-x', fov );
+			model.setAttr( 'model-fov-x', fov );
 		}
 	}
 	
 	// Set the vertical fov to use for the model
-	void SetFovY( Element @elem, const String &fov )
+	void SetFovY( Element @elem, const float fov )
 	{
 		Element @model = GetModel( @elem );
 		
-		if( @model != null && !fov.empty() )
+		if( @model != null )
 		{
-			model.setProp( 'model-fov-y', fov );
+			model.setAttr( 'model-fov-y', fov );
 		}
 	}
 	
 	// Set the model's scaling factor
-	void SetScale( Element @elem, const String &scale )
+	void SetScale( Element @elem, const float scale )
 	{
 		Element @model = GetModel( @elem );
 		
-		if( @model != null && !scale.empty() )
+		if( @model != null )
 		{
-			model.setProp( 'model-scale', scale );
+			model.setAttr( 'model-scale', scale );
 		}
 	}
 	
-	// Set the height of the model's outlines
-	void SetOutlineHeight( Element @elem, const String &height )
+	void SetMaxScale( const float scale )
 	{
-		Element @model = GetModel( @elem );
-		
-		if( @model != null && !height.empty() )
-		{
-			model.setProp( 'model-outline-height', height );
-		}
+		this.maxScale = scale;
 	}
 	
-	// color in hex form: #f0f0f0f0
-	void SetOutlineColor( Element @elem, const String &color )
-	{
-		Element @model = GetModel( @elem );
-		
-		if( @model != null && !color.empty() )
-		{
-			model.setProp( 'model-outline-color', color );
-		}
-	}		
-	
-	// color in hex form: #f0f0f0f0
+	// color as decimal rgb triplet: "R G B"
 	void SetShaderColor( Element @elem, const String &color )
 	{
 		Element @model = GetModel( @elem );
 		
 		if( @model != null && !color.empty() )
 		{
-			model.setProp( 'model-shader-color', color );
+			model.setAttr( 'model-shader-color', color );
 		}
-	}		
+	}
 	
-	// model's x axis rotation
-	void XRotation( Element @elem, const String &rotation ) 
+	// color as decimal rgb triplet: "R G B"
+	void SetOutlineColor( Element @elem, const String &color )
 	{
 		Element @model = GetModel( @elem );
 		
-		if( @model != null && !rotation.empty() )
+		if( @model != null && !color.empty() )
 		{
-			model.setProp( 'model-rotation-pitch', rotation );
+			model.setAttr( 'model-outline-color', color );
+		}
+	}
+	
+	// model's x axis rotation
+	void XRotation( Element @elem, const float rotation ) 
+	{
+		Element @model = GetModel( @elem );
+		
+		if( @model != null )
+		{
+			model.setAttr( 'model-rotation-pitch', rotation );
 		}
 	}
 
 	// model's y axis rotation
-	void YRotation( Element @elem, const String &rotation )
+	void YRotation( Element @elem, const float rotation )
 	{
 		Element @model = GetModel( @elem );
 		
-		if( @model != null && !rotation.empty() )
+		if( @model != null )
 		{
-			model.setProp( 'model-rotation-yaw', rotation );
+			model.setAttr( 'model-rotation-yaw', rotation );
 		}
 	}
 
 	// model's z axis rotation
-	void ZRotation( Element @elem, const String &rotation )
+	void ZRotation( Element @elem, const float rotation )
 	{
 		Element @model = GetModel( @elem );
 		
-		if( @model != null && !rotation.empty() )
+		if( @model != null )
 		{
-			model.setProp( 'model-rotation-roll', rotation );
+			model.setAttr( 'model-rotation-roll', rotation );
 		}
 	}
 	
 	// set the model's x axis rotation speed
-	void SetXRotationSpeed( Element @elem, const String &speed ) 
+	void SetXRotationSpeed( Element @elem, const float speed ) 
 	{
 		Element @model = GetModel( @elem );
 		
-		if( @model != null && !speed.empty() )
+		if( @model != null )
 		{
-			model.setProp( 'model-rotation-speed-pitch', speed );
+			model.setAttr( 'model-rotation-speed-pitch', speed );
 		}
 	}
 	
 	// set the model's y axis rotation speed
-	void SetYRotationSpeed( Element @elem, const String &speed ) 
+	void SetYRotationSpeed( Element @elem, const float speed ) 
 	{
 		Element @model = GetModel( @elem );
 		
-		if( @model != null && !speed.empty() )
+		if( @model != null )
 		{
-			model.setProp( 'model-rotation-speed-yaw', speed );
+			model.setAttr( 'model-rotation-speed-yaw', speed );
 		}
 	}	
 	
 	// set the model's z axis rotation speed
-	void SetZRotationSpeed( Element @elem, const String &speed ) 
+	void SetZRotationSpeed( Element @elem, const float speed ) 
 	{
 		Element @model = GetModel( @elem );
 		
-		if( @model != null && !speed.empty() )
+		if( @model != null )
 		{
-			model.setProp( 'model-rotation-speed-roll', speed );
+			model.setAttr( 'model-rotation-speed-roll', speed );
 		}
 	}		
 }

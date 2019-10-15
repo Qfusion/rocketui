@@ -213,6 +213,15 @@
 			showMenuButton( 'link-main' );
 			showMenuButton( 'btn-return' );
 
+			// focus the first visible button
+			for( uint i = 0; i < gamecommands.getNumChildren(); i++ ) {
+				Element @button = @gamecommands.getChild( i );
+				if( button.css( 'display' ) != 'none' ) {
+					button.focus();
+					break;
+				}
+			}
+
 			setModalY( 0.5f );
 			animationsOnShow();
 		}
@@ -232,7 +241,6 @@
 
 			<button id="btn-join" command="cmd join" onclick="$onCmdButtonClick">Join the game</button>
 
-			<button id="btn-join-any" command="cmd join" onclick="$onCmdButtonClick">Join any team</button>
 			<button id="btn-join-team1" command="cmd join" onclick="$onCmdButtonClick">Join</button>
 			<button id="btn-join-team2" command="cmd join" onclick="$onCmdButtonClick">Join</button>
 			

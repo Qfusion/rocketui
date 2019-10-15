@@ -86,10 +86,10 @@ class ModelSetup
 		// model view decorator
 		ModelView m( modelViewId );
 		m.Initialize( @elem , model, /*cSkin.string*/DEFAULT_MODEL_SKIN ); 
-		m.SetYRotationSpeed( @elem, '220' );
-		m.SetScale( @elem, '0.9' );
-		m.SetFovX( @elem, 'auto' );
-		m.SetFovY( @elem, '30' );
+		m.SetYRotationSpeed( @elem, 220.0 );
+		m.SetScale( @elem, 1.0 );
+		m.SetFovX( @elem, 30.0 );
+		m.SetFovY( @elem, 0 );
 		mView = m;
 		
 		// reset elements and model view
@@ -101,13 +101,13 @@ class ModelSetup
 	String getCurrentModel( void )
 	{
 		DataSource @data = getDataSource( 'models' );
-		return data.getField( 'list', currentModel, 'name' );		
+		return data.getField( 'list', currentModel, 'name' );
 	}		
 	
 	String getOldModel( void )
 	{
 		DataSource @data = getDataSource( 'models' );
-		return data.getField( 'list', oldModel, 'name' );	
+		return data.getField( 'list', oldModel, 'name' );
 	}
 	
 	void UpdateModel( Element @elem )
@@ -143,22 +143,8 @@ class ModelSetup
 			return;
 			
 		String color = colorElement.value;
-
-		String colorHex = "#", outlineHex = "#";
-		array<String @> @components = StringUtils::Split( color, " " );
-		uint count = 0;
-		uint components_size = components.size();
-		for( uint i = 0; i < components_size; i++ ) {
-			int component = components[i].toInt();
-			colorHex += StringUtils::FormatInt( component, '0h', 2 );
-			outlineHex += StringUtils::FormatInt( int( float( component ) * 0.25f ), '0h', 2 );
-			count++;
-			if( count == 3 ) {
-				break;
-			}
-		}
-		mView.SetShaderColor( @elem, colorHex );
-		mView.SetOutlineColor( @elem, outlineHex );
+		
+		mView.SetShaderColor( @elem, color );
 		
 		if( realtime )
 			cColor.set( color );

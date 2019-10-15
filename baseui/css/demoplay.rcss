@@ -14,10 +14,7 @@
 	padding: 24dp;
 	position: relative;
 
-	ninep-decorator: ninepatch;
-	ninep-src: /ui/baseui/gfx/controls/modal;
-	ninep-coords: 0.375 0.375 0.375 0.375;
-	ninep-size: 24dp 24dp 24dp 24dp;
+	decorator: ninepatch( modal-frame-outer, modal-frame-inner, 1.0 );
 
 	width: 720dp;
 	overflow-y: hidden;

@@ -15,10 +15,7 @@
 	padding: 32dp;
 	position: relative;
 
-	ninep-decorator: ninepatch;
-	ninep-src: /ui/baseui/gfx/controls/modal;
-	ninep-coords: 0.375 0.375 0.375 0.375;
-	ninep-size: 24dp 24dp 24dp 24dp;
+	decorator: ninepatch( modal-frame-outer, modal-frame-inner, 1.0 );
 
 	width: 520dp;
 	overflow-y: hidden;
@@ -37,9 +34,7 @@
 
 /* Sidebar buttons and tabs */	
 button, input.submit {
-	darken-font-effect: shadow;
-	darken-offset: 1dp 1dp;
-	darken-color: black;		
+	font-effect: shadow( 1dp 1dp black );
 
 	margin-bottom: 8dp;
 	padding: 8dp;
@@ -49,15 +44,12 @@ button, input.submit {
 	display: inline-block;
 	drag: none;
 
-	ninep-decorator: ninepatch;
-	ninep-src: /ui/baseui/gfx/controls/button_purple;
-	ninep-coords: 0.125 0.125 0.125 0.125;
-	ninep-size: 4dp 4dp 4dp 4dp;
+	decorator: ninepatch( button-purple-outer, button-purple-inner, 0.5 );
 }
 
 #modal-controls button:hover, .modal-controls button:hover, #modal-controls input.submit:hover, .modal-controls input.submit:hover {
 	color: white;
-	ninep-src: /ui/baseui/gfx/controls/button_lightpurple;
+	decorator: ninepatch( button-lightpurple-outer, button-lightpurple-inner, 0.5 );
 }
 
 #modal-controls .button-apply, .modal-controls .button-apply, #modal-controls .button-cancel, .modal-controls .button-cancel, .button-other { 

@@ -36,10 +36,6 @@ h2 {
 	position: fixed;
 	width: 100%;
 	height: 100%;
-	bg-decorator: image;
-	bg-image: /ui/baseui/gfx/background 0 0 1 1;
-	bg2-decorator: image;
-	bg2-image: /ui/baseui/gfx/background2 0 0 1 1;
 }
 
 #header {
@@ -47,8 +43,7 @@ h2 {
 	top: 0dp; left: 0dp;
 	width: 100%;
 	height: 80dp;
-	grad-decorator: gradient;
-	grad-gradient: vertical #3e384ec0 #1f1c27a0;
+	decorator: gradient( vertical #3e384ec0 #1f1c27a0 );
 }
 		
 #header-top {
@@ -56,10 +51,7 @@ h2 {
 	top: 0dp; left: 0dp;
 	width: 100%;
 	height: 64dp;
-	ninep-decorator: ninepatch;
-	ninep-src: /ui/baseui/gfx/logo;
-	ninep-coords: 0 0 0 1;
-	ninep-size: 0 0 0 512dp;
+	decorator: ninepatch( logo-outer, logo-inner, 0.5 );
 }
 
 #content {
@@ -108,9 +100,7 @@ a:hover, a:focus {
 }
 
 #navi a, #navi button {
-	darken-font-effect: shadow;
-	darken-offset: 1dp 1dp;
-	darken-color: black;
+	font-effect: shadow( 1dp 1dp black );
 	color: #e86a2b;
 /*
 	font-family: Droid Sans;
@@ -131,11 +121,8 @@ a:hover, a:focus {
 
 #navi a:hover, #navi a:active, #navi a:focus, #navi button:hover, #navi button:active, #navi button:focus {
 	color: #fff;
-	darken-font-effect: none;
-	ninep-decorator: ninepatch;
-	ninep-src: /ui/baseui/gfx/controls/button;
-	ninep-coords: 0.125 0.125 0.125 0.125;
-	ninep-size: 4dp 4dp 4dp 4dp;
+	font-effect: none;
+	decorator: ninepatch( button-orange-outer, button-orange-inner, 0.5 );
 }
 
 #login_button, #logout_button {
@@ -222,9 +209,7 @@ a:hover, a:focus {
 #sidebar2 button { margin-top: 8dp; }
 
 #sidebar2 a, #sidebar2 button, .styled-button {
-	darken-font-effect: shadow;
-	darken-offset: 1dp 1dp;
-	darken-color: black;		
+	font-effect: shadow( 1dp 1dp black );
 	width: 75%;
 	margin-top: 0;
 	margin-bottom: 8dp;
@@ -233,21 +218,18 @@ a:hover, a:focus {
 	color: #e86a2b;
 /*	sound-hover: /sounds/menu/mouseover.wav; */
 	sound-click: /sounds/menu/ok.wav;
-	ninep-decorator: ninepatch;
-	ninep-src: /ui/baseui/gfx/controls/button_purple;
-	ninep-coords: 0.125 0.125 0.125 0.125;
-	ninep-size: 4dp 4dp 4dp 4dp;
+	decorator: ninepatch( button-purple-outer, button-purple-inner, 0.5 );
 	tab-index: auto;
 }
 
 #sidebar2 a:hover, #sidebar2 button:hover, #sidebar2 a:focus, #sidebar2 button:focus, .styled-button:hover, .styled-button:focus {
 	color: #fff;
-	ninep-src: /ui/baseui/gfx/controls/button_lightpurple;
+	decorator: ninepatch( button-lightpurple-outer, button-lightpurple-inner, 0.5 );
 }
 
 #sidebar2 a:active, #sidebar2 button:active, .styled-button:active {
 	color: #fff;
-	ninep-src: /ui/baseui/gfx/controls/button_purple_active;
+	decorator: ninepatch( button-purple-active-outer, button-purple-active-inner, 0.5 );
 }
 
 #sidebar2 hr {
@@ -275,9 +257,7 @@ div.title {
 }
 
 tabset tab, #navibar a {
-	darken-font-effect: shadow;
-	darken-offset: 1dp 1dp;
-	darken-color: black;		
+	font-effect: shadow( 1dp 1dp black );
 	width: 75%;
 	padding: 8dp;
 	margin-right: 4dp;
@@ -288,11 +268,7 @@ tabset tab, #navibar a {
 /*	sound-hover: /sounds/menu/mouseover.wav;*/
 	sound-click: /sounds/menu/ok.wav;
 	white-space: nowrap;
-
-	ninep-decorator: ninepatch;
-	ninep-src: /ui/baseui/gfx/controls/button_purple_trans;
-	ninep-coords: 0.125 0.125 0.125 0.125;
-	ninep-size: 4dp 4dp 0 4dp;
+	decorator: ninepatch( button-purple-trans-outer, button-purple-trans-inner, 0.5 );
 }
 
 tabset tab:active {
@@ -301,7 +277,7 @@ tabset tab:active {
 
 tabset tab:selected, tabset tab:hover, tabset tab:focus, #navibar a:active, #navibar a:hover {
 	color: #fff;
-	ninep-src: /ui/baseui/gfx/controls/button_purple_active;
+	decorator: ninepatch( button-purple-active-outer, button-purple-active-inner, 0.5 );
 }
 
 tabset tabs, #navibar {
@@ -336,26 +312,20 @@ tabset tabs, #navibar {
 	float: left;
 	width: 32dp;
 	height: 100%;
-	ninep-decorator: ninepatch;
-	ninep-src: /ui/baseui/gfx/arrow_left;
-	ninep-coords: 0 0 0 0;
-	ninep-size: -16dp 0 -16dp 0;
+	decorator: image( left-arrow-outer scale-down center center );
 }
 
 .left-arrow:hover {
-	ninep-src: /ui/baseui/gfx/arrow_left_h;
+	image-color: #e86a2b;
 }
 
 .right-arrow {
 	float: right;
 	width: 32dp;
 	height: 100%;
-	ninep-decorator: ninepatch;
-	ninep-src: /ui/baseui/gfx/arrow_right;
-	ninep-coords: 0 0 0 0;
-	ninep-size: -16dp 0 -16dp 0;
+	decorator: image( left-arrow-outer flip-horizontal scale-down center center );
 }
 
 .right-arrow:hover {
-	ninep-src: /ui/baseui/gfx/arrow_right_h;
+	image-color: #e86a2b;
 }

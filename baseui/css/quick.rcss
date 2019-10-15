@@ -14,7 +14,6 @@ button {
 	background-color: transparent;
 	text-align: left;
 	color: white;
-	ninep-decorator: none;
 }
 
 #menu-quick-abs {
@@ -34,11 +33,7 @@ button {
 	padding-left: 40dp;
 	padding-right: 0dp;
 	background-color: transparent;
-	
-	ninep-decorator: ninepatch;
-	ninep-src: /ui/baseui/gfx/controls/modal;
-	ninep-coords: 0.375 0.375 0.375 0.375;
-	ninep-size: 24dp 24dp 24dp 24dp;
+	decorator: ninepatch( modal-frame-outer, modal-frame-inner, 1.0 );
 }
 
 .number {

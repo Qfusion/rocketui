@@ -2,8 +2,8 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="css/html4.rcss" />
 	<link rel="stylesheet" type="text/css" href="css/common.rcss" />
-	<link rel="stylesheet" type="text/css" href="css/base.rcss" />
 	<link rel="stylesheet" type="text/css" href="css/controls.rcss" />
+	<link rel="stylesheet" type="text/css" href="css/base.rcss" />
 	<link rel="stylesheet" type="text/css" href="/gfx/ui/css/ui_map.rcss" />
 	<script src="as/base.as" />
 	<script src="as/popup.as" />
@@ -22,15 +22,15 @@
 
 			/* set content div height */
 			Element @content = body.getElementById( 'content' );
-			
-			if( @content != null ) {
-				int contentHeight = window.height 
-					- int( body.getElementById( 'footer' ).clientHeight() )
-					- int( content.resolveProp( 'padding-top', 0.0 ) )
-					- int( content.resolveProp( 'padding-bottom', 0.0 ) )
-					- int( content.resolveProp( 'top', 0.0 ) );
 
-				content.css( 'height', String( contentHeight ) + 'px' );
+			if( @content != null ) {
+				float contentHeight = float( window.height )
+					- body.getElementById( 'footer' ).clientHeight()
+					- int( content.resolveNumericProperty( 'padding-top' ) )
+					- int( content.resolveNumericProperty( 'padding-bottom' ) )
+					- int( content.offsetTop() );
+					;
+				content.css( 'height', String( int( contentHeight ) ) + 'px' );
 
 				int max_width = int( 1024 * window.pixelRatio );
 				if( window.width > max_width ) {
@@ -39,7 +39,7 @@
 					content.css( 'padding-right', String ( padding ) + "px" );
 				}
 			}
-			
+
 			body.getElementById( 'version_str' ).setInnerRML( game.name + ' ' + game.version.substr( 0, game.version.locate( ' ',  0 ) ) );
 
 			/* grab the navigation panel */
@@ -178,7 +178,11 @@
 	<div style="position:fixed; width:100%; height:69px; top:0px; left:0px; background:#ff0;" />
 	-->
 	
-	<worldview id="background-map" class="ui-map" />
+	<worldview id="background-map" class="ui-map" worldmodel="maps/ui.bsp" 
+		vieworigin-x="920" vieworigin-y="-560" vieworigin-z="324"
+		viewangle-pitch="0" viewangle-yaw="90" viewangle-roll="0"
+		wave-yaw-amplitude="15" wave-yaw-phase="0" wave-yaw-frequency="0.006"
+	/>
 
 	<blur />
 

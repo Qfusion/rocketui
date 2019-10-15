@@ -152,8 +152,8 @@
 		body.getElementById( 'serverbrowser_frame' ).css( 'height',
 			(body.getElementById( 'leftside' ).clientHeight() 
 			- body.getElementById( 'navibar' ).clientHeight()
-			- int( container.resolveProp( 'padding-top', container.clientHeight() ) )
-			- int( container.resolveProp( 'padding-bottom', container.clientHeight() ) )
+			- int( container.resolveNumericProperty( 'padding-top' ) )
+			- int( container.resolveNumericProperty( 'padding-bottom' ) )
 			) + 'px'
 		);
 
@@ -488,9 +488,7 @@
 		}
 
 		int firstRowChanged = ev.getParameter( 'first_row_changed', 0 );
-		
-		String prop = servergrid.getProp( 'selected-row' );
-		int selectedRowIndex = prop.empty() ? -1 : prop.toInt();
+		int selectedRowIndex = servergrid.getAttr( 'selected-row', -1 );
 
 		for( int i = 0; i < numRowsChanged; i++ ) {
 			int rowIndex = firstRowChanged + i;
@@ -511,19 +509,17 @@
 	
 	void onServerBrowserRowRemove( Element @self, Event @ev )
 	{
+/*
 		if( @servergrid == null || @ev == null ) {
 			return;
 		}
-		
 		int numRowsRemoved = ev.getParameter( 'num_rows_removed', 0 );
 		if( numRowsRemoved == 0 ) {
 			return;
 		}
 		
 		int firstRowRemoved = ev.getParameter( 'first_row_removed', 0 );
-
-		String prop = servergrid.getProp( 'selected-row' );
-		int selectedRowIndex = prop.empty() ? -1 : prop.toInt();
+		int selectedRowIndex = servergrid.getAttr( 'selected-row', -1 );
 
 		if( selectedRowIndex >= firstRowRemoved && selectedRowIndex < firstRowRemoved + numRowsRemoved ) {
 			// clear/hide the infoblock
@@ -531,6 +527,7 @@
 			connectbtn.css( 'display', 'none' );
 			favoritebtn.css( 'display', 'none' );
 		}
+*/
 	}
 
 	void onServerBrowserRowActivate( Element @elem, Event @ev )
@@ -556,21 +553,17 @@
 			return;
 		}
 
-		String prop = servergrid.getProp( 'selected-row' );
-		if( prop != '' )
+		int selectedRow = servergrid.getAttr( 'selected-row', -1 );
+		if( selectedRow >= 0 )
 		{
-			int selectedRow = prop.toInt();
-			if( selectedRow >= 0 )
-			{
-				String address = browserDataSource.getField( browserTableName, selectedRow, 'address' );
-				if( address.empty() ) {
-					return;
-				}
-
-				// connect to server
-				game.exec( 'connect "' + address + '"\n' );
+			String address = browserDataSource.getField( browserTableName, selectedRow, 'address' );
+			if( address.empty() ) {
+				return;
 			}
-		}	
+
+			// connect to server
+			game.exec( 'connect "' + address + '"\n' );
+		}
 	}
 	
 	bool toggleFavoriteOnSelectedServer( void )
@@ -585,13 +578,10 @@
 			return false;
 		}
 
-		String prop = servergrid.getProp( 'selected-row' );
-		if( prop != '' ) {
-			int selectedRow = prop.toInt();
-			if( selectedRow >= 0 ) {
-				address = browserDataSource.getField( browserTableName, selectedRow, 'address' );
-				isFavorite = browserDataSource.getField( browserTableName, selectedRow, 'favorite' ) == 'yes';
-			}
+		int selectedRow = servergrid.getAttr( 'selected-row', -1 );
+		if( selectedRow >= 0 ) {
+			address = browserDataSource.getField( browserTableName, selectedRow, 'address' );
+			isFavorite = browserDataSource.getField( browserTableName, selectedRow, 'favorite' ) == 'yes';
 		}
 
 		if( address.empty() )

@@ -1,5 +1,5 @@
 #player-setup { text-align: center; }
-#player-setup panel { text-align: left; }
+#player-setup panel { text-align: left; width: 100%; }
 #player-options-form { text-align: left; }
 
 #player-options-form input {
@@ -21,7 +21,6 @@ tabset tab {
 .crosshair {
 	color: black;
 	display: inline-block;
-	font-charset: U+0020-007E;
 	font-family: Warsow Crosshairs;
 	font-size: 28dp;
 	position: absolute;
