@@ -39,7 +39,7 @@
 			String tab = '';
 			const Dictionary @dict = body.ownerDocument.URL.getParameters();
 			if( dict.get( 'tab', tab ) ) {
-				cast<ElementTabSet>(body.getElementById( 'options-set' )).setActiveTab( int(tab) );
+				cast<ElementTabSet>(body.getElementById( 'options-set' )).setActiveTab( tab.toInt() );
 			}
 
 			Cvar( 'ui_autobrowse_manual', '0', ::CVAR_ARCHIVE );
